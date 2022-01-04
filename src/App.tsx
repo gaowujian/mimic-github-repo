@@ -9,7 +9,7 @@ function App() {
   return (
     <PageHeader
       ghost={false}
-      avatar={{ src: logo }}
+      avatar={{ icon: <span className="iconfont icon-github-fill"></span>, style: { background: "black" } }}
       extra={
         <Space>
           <Badge overflowCount={5} count={0} showZero={true} color={"lightblue"}>
@@ -46,6 +46,7 @@ function App() {
         <li>使用badge修改徽标</li>
         <li>使用font awesome图标库</li>
         <li>使用阿里巴巴iconfont图标库</li>
+        <li>avatar支持多种形式, 包括src图片形式，和icon属性组件形式</li>
       </ul>
     </PageHeader>
   );
