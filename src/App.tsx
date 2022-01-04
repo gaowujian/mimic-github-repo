@@ -1,27 +1,34 @@
 import React from "react";
 import "./App.css";
 
-import { PageHeader, Avatar, Button, Row, Space, Badge, Dropdown } from "antd";
-import logo from "./github.png";
+import { PageHeader, Avatar, Button, Row, Space, Badge, Dropdown, List, Card, Menu } from "antd";
+
 import { NotificationOutlined } from "@ant-design/icons";
 
 function App() {
   return (
     <PageHeader
       ghost={false}
-      avatar={{ icon: <span className="iconfont icon-github-fill"></span>, style: { background: "black" } }}
+      avatar={{
+        icon: <span className="iconfont icon-github-fill" style={{ fontSize: "32px" }}></span>,
+        style: { background: "black" },
+      }}
       extra={
         <Space>
-          <Badge overflowCount={5} count={0} showZero={true} color={"lightblue"}>
+          <Badge overflowCount={5} count={0} showZero={true} color={"#3498db"}>
             <NotificationOutlined style={{ fontSize: 24 }} />
           </Badge>
           <Dropdown
             trigger={["click"]}
+            placement="bottomRight"
+            arrow
             overlay={
-              <>
-                <button>1</button>
-                <button>2</button>
-              </>
+              <Menu>
+                <Menu.Item key="1">new repo</Menu.Item>
+                <Menu.Item key="2">import repo</Menu.Item>
+                <Menu.Item key="3">new gist</Menu.Item>
+                <Menu.Item key="4">new organization</Menu.Item>
+              </Menu>
             }
           >
             <div>
@@ -34,11 +41,12 @@ function App() {
             </div>
           </Dropdown>
 
-          <Button>登录</Button>
+          <Button shape="circle" size="large">
+            Go
+          </Button>
         </Space>
       }
     >
-      <i className="fa fa-github" aria-hidden="true"></i>
       <h1> 当前页面使用技术点:</h1>
       <ul>
         <li> 页头使用了 ghost:false属性，使用了一个白底，和容器元素背景区分开</li>
@@ -46,7 +54,9 @@ function App() {
         <li>使用badge修改徽标</li>
         <li>使用font awesome图标库</li>
         <li>使用阿里巴巴iconfont图标库</li>
-        <li>avatar支持多种形式, 包括src图片形式，和icon属性组件形式</li>
+        <li>avatar支持多种形式, 包括src属性添加图片形式，和icon属性添加组件形式</li>
+        <li>dropdown(下拉菜单)一般直接配合menu，不用搭配card, List等组件,可能会造成card的自带样式失效</li>
+        <li>用于数据展示的列表可以用List通用列表,用于地址跳转的可以用Menu，菜单列表</li>
       </ul>
     </PageHeader>
   );
