@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
+import ReactDOM from "react-dom";
 
-import { PageHeader, Avatar, Button, Row, Space, Badge, Dropdown, List, Card, Menu } from "antd";
+import { PageHeader, Avatar, Button, Row, Space, Badge, Dropdown, List, Card, Menu, Input } from "antd";
 
-import { NotificationOutlined } from "@ant-design/icons";
+import { NotificationOutlined, EditOutlined } from "@ant-design/icons";
 
 function App() {
+  const [inputExpanded, setInputExpanded] = useState(false);
+  const baseStyle = { transition: "all 0.1s ease-in-out" };
+  const inputStyle = (inputExpanded && { ...baseStyle, width: "400px" }) || baseStyle;
+  const inputRef = useRef(null);
+  const inputSuffix = !inputExpanded ? <EditOutlined /> : <div></div>;
   return (
     <PageHeader
+      className="app-header"
       ghost={false}
       avatar={{
         icon: <span className="iconfont icon-github-fill" style={{ fontSize: "32px" }}></span>,
@@ -15,6 +22,24 @@ function App() {
       }}
       extra={
         <Space>
+          <Input
+            placeholder="search or jump to ... "
+            style={{ ...inputStyle }}
+            ref={inputRef}
+            suffix={inputSuffix}
+            onFocus={() => {
+              setInputExpanded(true);
+            }}
+            onBlur={() => {
+              setInputExpanded(false);
+            }}
+          />
+          <Menu mode="horizontal">
+            <Menu.Item key="1">pull request</Menu.Item>
+            <Menu.Item key="2">issues</Menu.Item>
+            <Menu.Item key="3">marketplace </Menu.Item>
+            <Menu.Item key="4">explore</Menu.Item>
+          </Menu>
           <Badge overflowCount={5} count={0} showZero={true} color={"#3498db"}>
             <NotificationOutlined style={{ fontSize: 24 }} />
           </Badge>
