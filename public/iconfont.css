@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3116300 */
+  src: url("./iconfont.woff2") format("woff2"), url("./iconfont.woff") format("woff"),
+    url("./iconfont.ttf") format("truetype"), url("./iconfont.svg") format("svg");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-caretdown:before {
+  content: "\e627";
+}
+
+.icon-star:before {
+  content: "\e7df";
+}
+
+.icon-fork:before {
+  content: "\e7e8";
+}
+
+.icon-github-fill:before {
+  content: "\e885";
+}
+
+.icon-eye:before {
+  content: "\e7ed";
+}
+
+.icon-add:before {
+  content: "\e664";
+}
