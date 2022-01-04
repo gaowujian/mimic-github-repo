@@ -1,6 +1,9 @@
 details summary {
   list-style: none;
 }
+.app-header {
+  /* background-color: #333; */
+}
 .app-header .ant-page-header-heading-extra {
   flex: 1;
 }
@@ -14,4 +17,12 @@ details summary {
 
 .app-header .ant-space-item:nth-child(2) {
   margin-right: auto;
+}
+
+.app-content {
+  padding: 0 40px;
+}
+
+.app-content .text {
+  font-size: 20px;
 }
