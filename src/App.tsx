@@ -25,11 +25,6 @@ import { NotificationOutlined, EditOutlined, CloseCircleFilled, CloseCircleOutli
 import { useReducer } from "react";
 const { Text } = Typography;
 
-const SimpleCard: React.FC<Record<string, any>> = function (props) {
-  const { children, ...rest } = props;
-  return <div style={{ border: "1px solid #ddd", borderRadius: "5px" }}>{children}</div>;
-};
-
 const data = [{ desc: "participating and mentions" }, { desc: "all activity" }, { desc: "ignore" }, { desc: "custom" }];
 
 function App() {
@@ -44,6 +39,15 @@ function App() {
     selectedRowKeys,
     onChange: (keys: ReactText[]) => setSelectedRowKeys(keys),
   };
+  useEffect(() => {
+    const fun = () => {
+      setWatchVisible(false);
+    };
+    document.addEventListener("click", fun);
+    return () => {
+      document.removeEventListener("click", fun);
+    };
+  }, [watchVisible]);
   return (
     <div>
       <PageHeader
@@ -125,7 +129,8 @@ function App() {
             为了实现在dropdown的弹出层区域内点击一个关闭按钮，让dropdown消失，所以我们需要给dropdown添加visible属性
           </li>
           <li>
-            点击其他区域触发一些行为的等价效果就是，当前区域失去了焦点，对于button来说，点击弹出下拉菜单，设置button的blur事件，也就是按钮失去焦点，会导致菜单收回
+            空白区域点击实现隐藏利用了事件的冒泡，给body一个关闭的动作，然后在指定区域内使用 e.stopPropagation
+            可以阻止冒泡，也就不会触发body上的关闭动作
           </li>
         </ul>
       </PageHeader>
@@ -151,7 +156,12 @@ function App() {
               visible={watchVisible}
               overlay={() => {
                 return (
-                  <SimpleCard>
+                  <div
+                    className="simple-card"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
                     <ProList
                       className="watch-card"
                       toolBarRender={() => {
@@ -184,16 +194,14 @@ function App() {
                       }}
                       rowSelection={rowSelection}
                     ></ProList>
-                  </SimpleCard>
+                  </div>
                 );
               }}
             >
               <Button
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   setWatchVisible(!watchVisible);
-                }}
-                onBlur={() => {
-                  setWatchVisible(false);
                 }}
               >
                 <Space align="center">

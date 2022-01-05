@@ -28,3 +28,8 @@
 .watch-card .ant-pro-table-alert {
   display: none;
 }
+
+.simple-card {
+  border: "1px solid #ddd";
+  border-radius: "5px";
+}
