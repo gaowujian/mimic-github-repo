@@ -1,6 +1,4 @@
-details summary {
-  list-style: none;
-}
+@import "@ant-design/pro-list/dist/list.css";
 .app-header {
   /* background-color: #333; */
 }
@@ -25,4 +23,8 @@ details summary {
 
 .app-content .text {
   font-size: 20px;
+}
+
+.watch-card .ant-pro-table-alert {
+  display: none;
 }
