@@ -3,6 +3,7 @@ import type { ReactText } from "react";
 import "./App.css";
 import ReactDOM from "react-dom";
 import ProList from "@ant-design/pro-list";
+import classNames from "classnames";
 
 import {
   PageHeader,
@@ -48,6 +49,8 @@ function App() {
       document.removeEventListener("click", fun);
     };
   }, [watchVisible]);
+  const [isStarIconClicked, setIsStarIconClicked] = useState(false);
+  const starIconClassnames = classNames("iconfont icon-star-fill", { "star-active": isStarIconClicked });
   return (
     <div>
       <PageHeader
@@ -222,9 +225,12 @@ function App() {
               overlay={() => {
                 return <></>;
               }}
+              onClick={() => {
+                setIsStarIconClicked(!isStarIconClicked);
+              }}
             >
               <Space align="center">
-                <span className="iconfont icon-star"></span>
+                <span className={starIconClassnames}></span>
                 <span>Starred</span>
               </Space>
             </Dropdown.Button>

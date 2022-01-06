@@ -33,3 +33,7 @@
   border: "1px solid #ddd";
   border-radius: "5px";
 }
+
+.star-active {
+  color: #f1c40f;
+}
