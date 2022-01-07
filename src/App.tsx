@@ -115,6 +115,7 @@ function App() {
         <ul>
           <li> 页头使用了 ghost:false属性，使用了一个白底，和容器元素背景区分开</li>
           <li>page header属于一个UI视图层面的高级封装组件，不够灵活，需要根据实际情况使用</li>
+          <li>page header自带一个左上角的返回按钮，很适合进行路由的跳转</li>
           <li>space组件水平控制间隔，并调整垂直对齐</li>
           <li>使用badge修改徽标</li>
           <li>使用font awesome图标库</li>
