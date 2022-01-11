@@ -1,29 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import type { ReactText } from "react";
-import "./App.css";
-import ReactDOM from "react-dom";
+import { CloseCircleOutlined, EditOutlined, NotificationOutlined } from "@ant-design/icons";
 import ProList from "@ant-design/pro-list";
+import { Badge, Breadcrumb, Button, Dropdown, Input, Menu, PageHeader, Row, Space, Typography } from "antd";
 import classNames from "classnames";
+import React, { ReactText, useEffect, useReducer, useState } from "react";
+import "./App.css";
 
-import {
-  PageHeader,
-  Avatar,
-  Button,
-  Row,
-  Space,
-  Badge,
-  Dropdown,
-  List,
-  Card,
-  Menu,
-  Input,
-  Breadcrumb,
-  Typography,
-  Tabs,
-} from "antd";
-
-import { NotificationOutlined, EditOutlined, CloseCircleFilled, CloseCircleOutlined } from "@ant-design/icons";
-import { useReducer } from "react";
 const { Text } = Typography;
 
 const data = [{ desc: "participating and mentions" }, { desc: "all activity" }, { desc: "ignore" }, { desc: "custom" }];
@@ -40,6 +21,7 @@ function App() {
     selectedRowKeys,
     onChange: (keys: ReactText[]) => setSelectedRowKeys(keys),
   };
+
   useEffect(() => {
     const fun = () => {
       setWatchVisible(false);
